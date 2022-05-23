@@ -9,7 +9,226 @@
 </head>
 
 <body>
-	Hello World
+
+	<canvas></canvas>
+	</div>
+	<style>
+		html, body {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	</style>
+	<script>
+	
+		canvas = document.querySelector('canvas');
+		ctx = canvas.getContext('2d');
+		canvas.width =  window.innerWidth - 20;
+		canvas.height = window.innerHeight - 20;
+
+				
+		
+		function wipeScreen(){
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		}
+		
+		speed = 0;
+		dir = 0;
+		x = canvas.width/2;
+		y = canvas.height/2;
+		
+		
+		var map = {};
+		
+		mob = false;
+		
+		onkeydown = onkeyup = function (e){
+			map[e.code] = e.type == 'keydown';
+			const ainc = (Math.PI*2)/100;
+		    if (map['ArrowLeft']){
+				dir-=ainc;
+		    }
+		    if (map['ArrowRight']){
+				dir+=ainc;
+		    }
+    		if (map['ArrowUp']){ //accellerate
+				speed += Math.pow(2, -speed)/2;//speed+=1/(100*speed+1);
+		    }
+		    if (map['ArrowDown']){
+				speed-=speed*0.1;
+		    }
+		}
+		
+		function distance(x1,y1,x2,y2){
+			var dx = x2-x1;
+			var dy = y2-y1;
+			return Math.sqrt(dx*dx + dy*dy);
+		}
+		
+		function drawCircle(x, y, radius) {
+			ctx.beginPath()
+			ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+			ctx.fill()
+		}
+		
+		function drawPerson(x,y,dir,waiting,color,intruck){
+			ctx.fillStyle = color;
+			ctx.translate(x, y);
+			ctx.rotate(dir);
+			drawCircle(0, -10, 3);
+			ctx.save();
+			ctx.scale(0.8, 1);
+			drawCircle(0,0,8);
+			ctx.restore();
+			drawCircle(0,10,3);
+			ctx.setTransform(1, 0, 0, 1, 0, 0);
+		}
+		
+		people = [];
+		for (i=0; i<20; i++){
+			people.push([
+				Math.random()*canvas.width,
+				Math.random()*canvas.height,
+				Math.random()*Math.PI*2,
+				false,
+				'red',
+				false //intruck
+				]);
+		}
+		function newTarget(){
+			people.push([
+					Math.random()*canvas.width,
+					Math.random()*canvas.height,
+					Math.random()*Math.PI*2,
+					true,
+					'green',
+					false
+					]);
+			}
+			
+		newTarget();
+		
+		function drawPeople(){
+			for (person of people){
+				drawPerson(...person);
+			}
+		}
+		
+		g = [Math.random()*canvas.width,
+			Math.random()*canvas.height];
+		
+		score = 0;
+		deaths = 0;
+		
+		function drawCart(x,y,dir){
+			ctx.translate(x, y);
+			ctx.rotate(dir);
+			ctx.fillStyle = 'black';
+			ctx.fillRect(-15-6,-10,30, 20);
+			ctx.fillRect(17-6,-10,10, 20);
+			ctx.fillStyle = 'red';
+			ctx.font = "15px Arial";
+			ctx.textAlign = "center";
+			ctx.textBaseline = 'middle';
+			ctx.fillText(deaths,-12,0); 
+			ctx.setTransform(1, 0, 0, 1, 0, 0);
+		}
+		
+		function drawGoal(){
+			ctx.fillStyle = 'lightgreen';
+			drawCircle(...g, 20);
+			ctx.fillStyle = 'black';
+			ctx.font = "30px Arial";
+			ctx.textAlign = "center";
+			ctx.textBaseline = 'middle';
+			ctx.fillText(score, ...g); 
+		}
+		
+		function movePeople(){
+			if (deaths > 5){
+				mob = true;
+			}
+			for (idx in people){
+				people[idx] = 
+					people[idx][3] ? 
+					[
+						people[idx][0],
+						people[idx][1],
+						people[idx][2],
+						people[idx][3],
+						people[idx][4],
+						people[idx][5]
+					] :
+					[
+						people[idx][0] + Math.cos(people[idx][2])*1,
+						people[idx][1] + Math.sin(people[idx][2])*1,
+						people[idx][2] + (Math.random()-0.5)*0.1,
+						people[idx][3],
+						people[idx][4],
+						people[idx][5]
+					];
+				if (people[idx][5]){
+					//alert(people[idx][5]);
+					people[idx][0]=x;
+					people[idx][1]=y;
+					people[idx][2]=dir;
+					//console.log("--");
+				}
+				if  (distance(people[idx][0],people[idx][1],x,y) < 150 && !people[idx][5]){
+					dx = x - people[idx][0];
+					dy = y - people[idx][1];
+					cdir = Math.atan2(dy,dx)
+					if (mob){
+						//point at car
+						people[idx][2] = cdir;
+						
+					} else {
+						people[idx][2] = cdir + Math.PI;
+					}
+				}
+				if (people[idx][0] > canvas.width && !people[idx][5]){
+					people[idx][0]=0;
+				}
+				if (people[idx][0] < 0 && !people[idx][5]){
+					people[idx][0]=canvas.width;
+				}
+				if (people[idx][1] > canvas.height && !people[idx][5]){
+					people[idx][1]=0;
+				}
+				if (people[idx][1] < 0 && !people[idx][5]){
+					people[idx][1]=canvas.height;
+				}
+				if (distance(people[idx][0],people[idx][1],x,y) < 30){
+					if (people[idx][3]){
+						people[idx][5] = true;
+						//alert("in truck");
+					} else {
+						deaths++;
+						people.splice(idx,1);
+					}
+				}
+				if (people[idx][5] && distance(people[idx][0],people[idx][1],...g) < 50){
+					people.splice(idx,1); // drop off
+					score++;
+					newTarget();
+				}
+			}
+		}
+		
+		setInterval(
+			function(){
+				wipeScreen();
+				movePeople();
+				x += Math.cos(dir)*speed;
+				y += Math.sin(dir)*speed;
+				drawGoal();
+				drawCart(x,y,dir);
+				drawPeople();
+				}
+				,1
+			);
+		
+		
+	</script>
 </body>
 
 </html>

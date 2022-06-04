@@ -1,97 +1,132 @@
 <!DOCTYPE html>
 
 <html lang="en">
+    <head>
+        <title>CRYPTONOMICON</title>
 
-<head>
+        <meta charset="UTF-8" />
 
-  <title>CRYPTONOMICON</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <meta charset="UTF-8" />
+        <meta name="description" content="" />
+    </head>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <meta name="description" content="" />
-
-</head>
-
-<style>
-.card{
-  width:40px;
-  height:60px;
-  border:1px solid #151718;
-  float:left;
-  margin-right:5px;
-  margin-bottom:5px;
-  border-radius:2px;
-  font-family:courier;
-  cursor:pointer;
-}
-
-span.number, span.suit{
-  width:100%;
-  display:block;
-  text-align:center;
-  padding-top:8px;
-}
-</style>
-
-<script>
-function card(value, name, suit){
-  this.value = value;
-  this.name = name;
-  this.suit = suit;
-}
-
-function deck(){
-  this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-  this.suits = ['Hearts','Diamonds','Spades','Clubs'];
-  var cards = [];
-    
-    for( var s = 0; s < this.suits.length; s++ ) {
-        for( var n = 0; n < this.names.length; n++ ) {
-            cards.push( new card( n+1, this.names[n], this.suits[s] ) );
+    <style>
+        .card {
+            width: 40px;
+            height: 60px;
+            border: 1px solid #151718;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border-radius: 2px;
+            float: left;
+            font-family: courier;
+            cursor: pointer;
         }
-    }
-	
-	cards.push(new card(53, 'A', 'Jokers'))
-	cards.push(new card(53, 'B', 'Jokers'))
 
-    return cards;
-}
+        .deck {
+            overflow: hidden;
+        }
 
-var myDeck = new deck();
+        span.number,
+        span.suit {
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding-top: 8px;
+        }
+    </style>
 
-window.onload = function() {
+    <script>
+        function card(value, name, suit){
+          this.value = value;
+          this.name = name;
+          this.suit = suit;
+        }
 
-  myDeck = shuffle(myDeck);
+        function deck(){
+          this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+          this.suits = ['Hearts','Diamonds','Spades','Clubs'];
+          var cards = [];
 
-  for(var i=0; i < myDeck.length; i++){
-    div = document.createElement('div');
-    div.className = 'card';
+            for( var s = 0; s < this.suits.length; s++ ) {
+                for( var n = 0; n < this.names.length; n++ ) {
+                    cards.push( new card( n+1, this.names[n], this.suits[s] ) );
+                }
+            }
 
-    if(myDeck[i].suit == 'Diamonds'){
-      var ascii_char = '&diams;';
-	}
-	else if (myDeck[i].suit == 'Jokers'){
-		var ascii_char = '&#9786;';
-	}
-    else {
-      var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-    }
+        	cards.push(new card(53, 'A', 'Jokers'))
+        	cards.push(new card(53, 'B', 'Jokers'))
 
-    div.innerHTML = '<span class="number">' + myDeck[i].name + '</span><span class="suit">' + ascii_char + '</span>';
-    document.body.appendChild(div);
-  }
+            return cards;
+        }
 
-}
+        var myDeck = new deck();
 
-function shuffle(o) {
-  for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-  return o;
-};
-</script>
+        function display(deck, div){
+            div = document.createElement('div')
+            div.className = 'deck'
+            for(var i=0; i < deck.length; i++){
+        		if(deck[i].suit == 'Diamonds'){
+        		  var ascii_char = '&diams;';
+        		}
+        		else if (deck[i].suit == 'Jokers'){
+        			var ascii_char = '&#9786;';
+        		}
+        		else {
+        		  var ascii_char = '&' + deck[i].suit.toLowerCase() + ';';
+        		}
 
-<body>
-</body>
+        		div.innerHTML += '<div class="card">'+'<span class="number">' + deck[i].name + '</span><span class="suit">' + ascii_char + '</span>' + '</div>';
+          }
+          document.body.appendChild(div)
+        }
 
+        window.onload = function() {
+          myDeck = shuffle(myDeck);
+
+          display(myDeck);
+
+          document.body.innerHTML += '<hr></hr>'
+
+          /*
+
+            Find the A joker. Move it one card down. (That is, swap it with the card beneath it.)
+        	If the joker is the bottom card of the deck, move it just below the top card.
+
+            Find the B joker. Move it two cards down.
+        	If the joker is the bottom card of the deck, move it just below the second card.
+        	If the joker is one up from the bottom card, move it just below the top card.
+        	(Basically, assume the deck is a loop…you get the idea.)
+
+          */
+		  
+		  function moveDown(name, deck){
+			  for(var i=0; i < deck.length; i++){
+				if (deck[i].name == name){
+					break;
+				}
+			  }
+			  
+			  deck.splice((i+2)%deck.length, 0, deck[i]);
+			  deck.splice(i, 1);
+		  }
+		  
+		  moveDown('A', myDeck)
+		  
+		  moveDown('B', myDeck)
+		  moveDown('B', myDeck)
+
+          display(myDeck);
+
+
+        }
+
+        function shuffle(o) {
+          for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+          return o;
+        };
+    </script>
+
+    <body></body>
 </html>

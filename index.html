@@ -116,9 +116,38 @@
 		  
 		  moveDown('B', myDeck)
 		  moveDown('B', myDeck)
-
-          display(myDeck);
-
+		  
+		  display(myDeck);
+		  document.body.innerHTML += '<hr></hr>'
+		  
+		  /*
+		  Perform a triple cut. 
+		  That is, swap the cards above the first joker with the cards below the second joker.
+		  “First” and “second” jokers refer to whatever joker is nearest to, and furthest from, the top of the deck.
+		  Ignore the “A” and “B” designations for this step.
+		  */
+		  
+		  function tripleSwap(deck){
+			for(var i=0; i < deck.length; i++){
+				if (deck[i].suit == 'Jokers'){
+					var i1 = i;
+					break;
+				}
+			  }
+			for(var j=i+1; j < deck.length; j++){
+				if (deck[j].suit == 'Jokers'){
+					var i2 = j;
+					break;
+				}
+			  }
+			 
+			 console.log(i1)
+			 console.log(i2)
+			return [...deck.slice(i2+1, deck.length), ...deck.slice(i1,i2+1), ...deck.slice(0, i1)]
+		  }
+			
+		  myDeck = tripleSwap(myDeck);
+		  display(myDeck);
 
         }
 

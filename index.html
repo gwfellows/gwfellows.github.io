@@ -148,6 +148,49 @@
 			
 		  myDeck = tripleSwap(myDeck);
 		  display(myDeck);
+		  document.body.innerHTML += '<hr></hr>'
+		  
+		  /*
+			Perform a count cut. 
+			Look at the bottom card.
+			Convert it into a number from 1 through 53.
+			(Use the bridge order of suits: clubs, diamonds, hearts, and spades.
+			If the card is a club, it is the value shown.
+			If the card is a diamond, it is the value plus 13.
+			If it is a heart, it is the value plus 26.
+			If it is a spade, it is the value plus 39.
+			Either joker is a 53.)
+			Count down from the top card that number.
+			(I generally count 1 through 13 again and again if I have to; it’s easier than counting to high numbers sequentially.)
+			Cut after the card that you counted down to, leaving the bottom card on the bottom.
+		  */
+		  
+		  function countCut(deck){
+			function cardToNum(card){
+				if (card.suit == "Clubs"){
+					return card.value;
+				}
+				else if (card.suit == "Diamonds"){
+					return card.value + 13;
+				}
+				else if (card.suit == "Hearts"){
+					return card.value + 26;
+				}
+				else if (card.suit == "Spades"){
+					return card.value + 39;
+				}
+				else if (card.suit == "Jokers"){
+					return 53;
+				}
+			}
+			
+			n = cardToNum(deck[deck.length-1])
+			return [...deck.slice(n, deck.length-1), ...deck.slice(0,n), deck[deck.length-1]]
+		  }
+		  
+		  myDeck = countCut(myDeck)
+		  display(myDeck)
+
 
         }
 

@@ -22,6 +22,7 @@
             float: left;
             font-family: courier;
             cursor: pointer;
+			text-shadow: 0 0 10px white;
         }
 
         .deck {
@@ -35,14 +36,31 @@
             text-align: center;
             padding-top: 8px;
         }
+		
+		.gray {
+			background-color: lightgray;
+		}
+		.red {
+			background-color: salmon;
+		}
+		.blue {
+			background-color: lightblue;
+		}
     </style>
 
     <script>
-        function card(value, name, suit){
+        function card(value, name, suit, _class=""){
           this.value = value;
           this.name = name;
           this.suit = suit;
+		  this._class = _class;
         }
+		
+		function clearStyle(deck){
+			for(var i=0; i < deck.length; i++){
+				deck[i]._class = ""
+			}
+		}
 
         function deck(){
           this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -78,7 +96,7 @@
         		  var ascii_char = '&' + deck[i].suit.toLowerCase() + ';';
         		}
 
-        		div.innerHTML += '<div class="card">'+'<span class="number">' + deck[i].name + '</span><span class="suit">' + ascii_char + '</span>' + '</div>';
+        		div.innerHTML += '<div class="card '+deck[i]._class+'">'+'<span class="number">' + deck[i].name + '</span><span class="suit">' + ascii_char + '</span>' + '</div>';
           }
           document.body.appendChild(div)
         }
@@ -98,6 +116,7 @@
 		}
 		
 		function moveJokersPage(){
+			clearStyle(myDeck)
 			/*
 
             Find the A joker. Move it one card down. (That is, swap it with the card beneath it.)
@@ -112,9 +131,19 @@
 		  
 			document.body.innerHTML = ""
 			document.body.innerHTML += '<h1>MOVE JOKERS</h1>';
+			document.body.innerHTML += 'First, find the A joker and move it one card down.<br>Next, find the B joker and move it two cards down<br></br>';
 			
-			display(myDeck)
-			document.body.innerHTML += "-->"
+			for(var i=0; i < myDeck.length; i++){
+				if (myDeck[i].name == 'A'){
+					myDeck[i]._class = 'red';
+				}
+				if (myDeck[i].name == 'B'){
+					myDeck[i]._class = 'blue';
+				}
+			}
+			
+			display(myDeck);
+			document.body.innerHTML += "-->";
 			
 			function moveDown(name, deck){
 				  for(var i=0; i < deck.length; i++){
@@ -138,6 +167,7 @@
 		}
 		
 		function tripleCutPage(){
+			clearStyle(myDeck)
 			/*
 			Perform a triple cut. 
 		    That is, swap the cards above the first joker with the cards below the second joker.
@@ -147,6 +177,26 @@
 			
 			document.body.innerHTML = ""
 			document.body.innerHTML += '<h1>TRIPLE CUT</h1>';
+			document.body.innerHTML += 'swap the cards above the first joker with the cards below the second joker<br></br>'
+			
+			//this is dumb
+			
+			for(var i=0; i < myDeck.length; i++){
+				if (myDeck[i].suit == 'Jokers'){
+					myDeck[i]._class = 'gray'
+					break;
+				}
+				myDeck[i]._class = 'red'
+			}
+			for(var j=i+1; j < myDeck.length; j++){
+				myDeck[j]._class = 'gray'
+				if (myDeck[j].suit == 'Jokers'){
+					break;
+				}
+			}
+			for(var k=j+1; k < myDeck.length; k++){
+				myDeck[k]._class = 'blue'
+			}
 			
 			function tripleSwap(deck){
 				for(var i=0; i < deck.length; i++){
@@ -191,6 +241,7 @@
 		}
 		
 		function countCutPage(){
+			clearStyle(myDeck)
 			/*
 			Perform a count cut. 
 			Look at the bottom card.
@@ -208,9 +259,25 @@
 			
 			document.body.innerHTML = ""
 			document.body.innerHTML += "<h1>COUNT CUT</h1>"
+			document.body.innerHTML += "Look at the bottom card.<br>"+
+			"Convert it into a number from 1 through 53. &nbsp (Use the bridge order of suits: clubs, diamonds, hearts, and spades.)<br>"+
+			"Count down from the top card that number.<br>"+
+			"Cut after the card that you counted down to, leaving the bottom card on the bottom.<br></br>"
+			
+			var n = cardToNum(myDeck[myDeck.length-1])
+			
+			for(var i=0; i < myDeck.length; i++){
+				if (i==myDeck.length-1){
+					myDeck[i]._class = 'gray'
+				}
+				else if (i<n){
+					myDeck[i]._class = 'red'
+				} else {
+					myDeck[i]._class = 'blue'
+				}
+			}
 			
 			function countCut(deck){
-				n = cardToNum(deck[deck.length-1])
 				return [...deck.slice(n, deck.length-1), ...deck.slice(0,n), deck[deck.length-1]]
 			}
 		  

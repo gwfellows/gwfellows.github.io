@@ -312,6 +312,8 @@
 		var keystream = ""
 		
 		function getOutputPage(){
+			clearStyle(myDeck);
+			
 			document.body.innerHTML = ''
 			document.body.innerHTML += '<h1>GET OUTPUT CHARACTER</h1>'
 			
@@ -333,12 +335,26 @@
 			(We need 1 through 26, and not 1 through 52, so we can get to letters.)
 			*/
 			
+			document.body.innerHTML += "look at the top card<br>"+
+			"Convert it into a number (again, using bridge ordering)<br>"+
+			"Count down that many cards<br>"+
+			"Write the card after the one you counted to on a piece of paper; don’t remove it from the deck.<br>"+
+			"This is the first output card, convert it to a number, and convert that number to a letter.<br>"+
+			"add that letter to your keystream<br></br>"
+
+			
 			n = cardToNum(myDeck[0])
 			alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 			c = alpha[cardToNum(myDeck[n%myDeck.length])%26]
 			
+			myDeck[0]._class = "gray";
+			myDeck[n%myDeck.length]._class = "red"
+			display(myDeck);
+			document.body.innerHTML += "<br></br>"
+			
 			keystream += c;
 			
+			document.body.innerHTML += "Your keystream is now:"
 			document.body.innerHTML += '<p>'+keystream+'</p>'
 			
 			document.body.innerHTML += '<button type="button" onclick="moveJokersPage();">NEXT</button>'

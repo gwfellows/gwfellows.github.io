@@ -46,6 +46,16 @@
 		.blue {
 			background-color: lightblue;
 		}
+		
+		body {
+			font-family: monospace;
+		}
+		
+		button {
+			 position: absolute;
+			bottom: 10px;
+			font-size: 20px
+		}
     </style>
 
     <script>
@@ -102,14 +112,18 @@
         }
 		
 		function titlePage(){
-			document.body.innerHTML += '<h1>CRYPTONOMICON</h1>';
+			document.body.innerHTML += '<h1>SOLITAIRE TUTORIAL</h1>';
 			document.body.innerHTML += '<button type="button" onclick="initialDeckPage();">NEXT</button>'
-
+			document.body.innerHTML += 'This demonstration shows how you can use the solitaire encryption algorithm to generate a secure keystream from a deck of cards<br>'
+			document.body.innerHTML += 'After each step click "next" to move on'
 		}
 		
 		function initialDeckPage(){
 			document.body.innerHTML = ""
 			document.body.innerHTML += '<h1>MAKE INITIAL DECK</h1>';
+			document.body.innerHTML += 'The initial deck acts as the secret "key" for solitaire<br>'
+			document.body.innerHTML += 'It must be shared with your partner and is ideally based on a randomly shuffled deck<br>'
+			document.body.innerHTML += 'Designate one joker as the "A" joker and another as the "B joker"<br></br>'
 			myDeck = shuffle(myDeck);
 			display(myDeck);
 			document.body.innerHTML += '<button type="button" onclick="moveJokersPage();">NEXT</button>'
@@ -152,7 +166,12 @@
 					}
 				  }
 				  
-				  deck.splice((i+2)%deck.length, 0, deck[i]);
+				  if (i==deck.length-1){
+					deck.unshift(deck.pop());
+					return
+				  }
+				  
+				  deck.splice((i+2), 0, deck[i]);
 				  deck.splice(i, 1);
 			  }
 			  

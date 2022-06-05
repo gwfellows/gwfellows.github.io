@@ -172,6 +172,24 @@
 			document.body.innerHTML += '<button type="button" onclick="countCutPage();">NEXT</button>'
 		}
 		
+		function cardToNum(card){
+			if (card.suit == "Clubs"){
+				return card.value;
+			}
+			else if (card.suit == "Diamonds"){
+				return card.value + 13;
+			}
+			else if (card.suit == "Hearts"){
+				return card.value + 26;
+			}
+			else if (card.suit == "Spades"){
+				return card.value + 39;
+			}
+			else if (card.suit == "Jokers"){
+				return 53;
+			}
+		}
+		
 		function countCutPage(){
 			/*
 			Perform a count cut. 
@@ -192,24 +210,6 @@
 			document.body.innerHTML += "<h1>COUNT CUT</h1>"
 			
 			function countCut(deck){
-				function cardToNum(card){
-					if (card.suit == "Clubs"){
-						return card.value;
-					}
-					else if (card.suit == "Diamonds"){
-						return card.value + 13;
-					}
-					else if (card.suit == "Hearts"){
-						return card.value + 26;
-					}
-					else if (card.suit == "Spades"){
-						return card.value + 39;
-					}
-					else if (card.suit == "Jokers"){
-						return 53;
-					}
-				}
-			
 				n = cardToNum(deck[deck.length-1])
 				return [...deck.slice(n, deck.length-1), ...deck.slice(0,n), deck[deck.length-1]]
 			}
@@ -219,7 +219,44 @@
 			myDeck = countCut(myDeck)
 			display(myDeck)
 			
-			document.body.innerHTML += '<button type="button" onclick="countCutPage();">NEXT</button>'
+			document.body.innerHTML += '<button type="button" onclick="getOutputPage();">NEXT</button>'
+			
+		}
+		
+		var keystream = ""
+		
+		function getOutputPage(){
+			document.body.innerHTML = ''
+			document.body.innerHTML += '<h1>GET OUTPUT CHARACTER</h1>'
+			
+			/*
+			Find the output card.
+			To do this, look at the top card.
+			Convert it into a number from 1 through 53 in the same manner as step 4.
+			Count down that many cards. (Count the top card as number one.)
+			Write the card after the one you counted to on a piece of paper; don’t remove it from the deck.
+			(If you hit a joker, don’t write anything down and start over again with step 1.)
+			This is the first output card.
+			Note that this step does not modify the state of the deck.
+
+			Convert the output card to a number.
+			As before, use the bridge suits to order them.
+			From lowest to highest, we have clubs, diamonds, hearts, and spades.
+			Hence, A-clubs through K-clubs is 1 through 13, A-diamonds through K-diamonds is 14 though 26,
+			A-hearts through K-hearts is 1 through 13, and A-spades through K-spades is 14 through 26.
+			(We need 1 through 26, and not 1 through 52, so we can get to letters.)
+			*/
+			
+			n = cardToNum(myDeck[0])
+			alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			c = alpha[cardToNum(myDeck[n%myDeck.length])%26]
+			
+			keystream += c;
+			
+			document.body.innerHTML += '<p>'+keystream+'</p>'
+			
+			document.body.innerHTML += '<button type="button" onclick="moveJokersPage();">NEXT</button>'
+			
 			
 		}
 

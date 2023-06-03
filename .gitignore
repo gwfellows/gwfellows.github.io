@@ -1,3 +1,15 @@
 
 tradeviz/.DS_Store
 .DS_Store
+tradeviz/arc.js
+tradeviz/countries_center_box-master/countries.csv
+tradeviz/countries_center_box-master/countries.json
+tradeviz/countries_center_box-master/countries.numbers
+tradeviz/countries_center_box-master/LICENSE.md
+tradeviz/countries_center_box-master/README.md
+tradeviz/datafields.txt
+tradeviz/preprocess.py
+tradeviz/tradeconnectivity/data.csv
+tradeviz/tradeconnectivity/other_economy.csv
+tradeviz/tradeconnectivity/products.csv
+tradeviz/tradeconnectivity/selected_economy.csv

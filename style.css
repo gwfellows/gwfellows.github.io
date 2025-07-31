@@ -99,6 +99,14 @@ td {
 }
 
 .portfolio-img {
-    height: 200px;
-    object-fit: contain;
+    max-height: 200px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    table h2 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        /* optional, to remove bottom too */
 }

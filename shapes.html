@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Random Fractal Mosaic</title>
+    <style>
+        canvas {
+            border: 1px solid white;
+            display: block;
+            margin: 20px auto;
+        }
+
+        #controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="mosaic" width="600" height="600"></canvas>
+    <div id="controls">
+        <button id="downloadBtn">Download Image</button>
+        <audio controls autoplay loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <script>
+        const canvas = document.getElementById("mosaic");
+        const ctx = canvas.getContext("2d");
+        const downloadBtn = document.getElementById("downloadBtn");
+
+        // Example harmonious color palettes
+        const colorPalettes = [
+            ["#f4a742", "#4a7bd8", "#ffffff"],
+            ["#d72638", "#3f88c5", "#ffffff"],
+            ["#6a0572", "#ab83a1", "#ffffff"],
+            ["#43aa8b", "#90be6d", "#ffffff"],
+            ["#ff6b6b", "#4ecdc4", "#ffffff"],
+            ["#f2b5d4", "#6a1d99", "#ff6f61"],
+            ["#2a9d8f", "#e9c46a", "#f4a261", "#2f3e46"],
+            ["#f9a826", "#f16b6b", "#ffffff", "#2d2d2d"],
+            ["#8ecae6", "#219ebc", "#023047", "#ffb703"],
+            ["#cc3d32", "#f1e3d3", "#4c4a60"],
+            ["#ff7b00", "#ffd300", "#d50032", "#0288d1"],
+            ["#803c38", "#ffd3b6", "#b2ebf2"],
+            ["#fffae3", "#ffcc00", "#ff5555", "#8b6f47"],
+            ["#c92a2a", "#f4c542", "#347474", "#e7e9db"],
+            ["#3b3b98", "#87bdd8", "#e2e2e2", "#f8e16c"],
+            ["#c9c7d0", "#4b6cb7", "#182c61", "#e3b4b1"]
+        ];
+
+
+        let colors = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+
+        function drawRectangles(x, y, width, height, depth) {
+            if (depth <= 0 || width < 5 || height < 5) {
+                ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+                ctx.fillRect(x, y, width, height);
+                ctx.strokeStyle = "#000";
+                ctx.strokeRect(x, y, width, height);
+                //ctx.fillRect(x, y, width, height);
+                return;
+            }
+
+            const verticalSplit = Math.random() < 0.5;
+            const splitRatio = 0.3 + Math.random() * 0.4;
+
+            if (verticalSplit) {
+                const splitX = x + width * splitRatio;
+                drawRectangles(x, y, width * splitRatio, height, depth - 1);
+                drawRectangles(splitX, y, width * (1 - splitRatio), height, depth - 1);
+            } else {
+                const splitY = y + height * splitRatio;
+                drawRectangles(x, y, width, height * splitRatio, depth - 1);
+                drawRectangles(x, splitY, width, height * (1 - splitRatio), depth - 1);
+            }
+        }
+
+        function drawMosaic() {
+            colors = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawRectangles(0, 0, canvas.width, canvas.height, 10);
+        }
+
+        downloadBtn.addEventListener("click", () => {
+            const link = document.createElement("a");
+            link.download = "fractal-mosaic.png";
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        drawMosaic();
+        setInterval(drawMosaic, 4000);
+    </script>
+</body>
+
+</html>

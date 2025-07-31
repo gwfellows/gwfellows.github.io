@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #fefefe;
+    color: #111;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111;
+    text-decoration: none;
+}
+
+.navbar-right a {
+    margin-left: 1.5rem;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar-right a:hover {
+    color: #000;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 0px;
+}
+
+h2 {
+    font-family: futura;
+}
+
+p {
+    font-family: futura;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 0px solid;
+}
+
+
+tr:hover {
+    background-color: antiquewhite !important;
+}
+
+
+table {
+
+    table-layout: fixed;
+    width: 100%;
+    padding-right: 25%;
+    padding-left: 25%;
+}
+
+@media screen and (max-width:770px) {
+    table {
+        table-layout: fixed;
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 1px;
+    }
+
+    h2 {
+        font-size: 15px
+    }
+
+    body {
+        font-size: 12px
+    }
+}
+
+td {
+    padding: 10px;
+
+    font-family: arial;
+}
+
+.portfolio-img {
+    height: 200px;
+}

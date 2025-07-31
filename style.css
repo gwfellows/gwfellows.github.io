@@ -41,12 +41,7 @@ h1 {
     padding-bottom: 0px;
 }
 
-h2 {
-    font-family: futura;
-}
-
 p {
-    font-family: futura;
     text-align: center;
 }
 
@@ -67,30 +62,38 @@ table {
     table-layout: fixed;
     width: 100%;
     padding-right: 25%;
-    padding-left: 25%;
+        padding-left: 25%;
 }
 
 @media screen and (max-width:770px) {
     table {
         table-layout: fixed;
         width: 100%;
-        padding-right: 5px;
+        padding-right: 1px;
         padding-left: 1px;
     }
 
     h2 {
-        font-size: 15px
+        font-size: 12px;
     }
 
-    body {
-        font-size: 12px
+                td {
+                    font-size: 10px !important;
+                }
+        
+                .portfolio-img {
+                    height: 100px !important;
+                }
+        
+                p {
+                    font-size: 10px !important;
     }
 }
 
 td {
     padding: 10px;
-
     font-family: arial;
+    font-size: 12pt;
 }
 
 .portfolio-img {

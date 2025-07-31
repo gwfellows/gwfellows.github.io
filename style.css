@@ -100,4 +100,5 @@ td {
 
 .portfolio-img {
     height: 200px;
+    object-fit: contain;
 }

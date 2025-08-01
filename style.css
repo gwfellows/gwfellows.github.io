@@ -116,3 +116,44 @@ img {
 .column {
     flex: 50%;
 }
+.main-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 2rem;
+    flex-wrap: wrap;
+    /* enables mobile stacking */
+}
+
+.experience {
+    flex: 2;
+    min-width: 300px;
+}
+
+.profile-image {
+    flex: 1;
+    min-width: 200px;
+}
+
+.profile-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .experience {
+        text-align: left;
+    }
+
+    .profile-image {
+        margin-top: 2rem;
+    }
+}

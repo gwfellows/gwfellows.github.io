@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>new tab</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #1d1c20;
+      --green: #9aba94;
+      --green-dim: #6a8c65;
+      --green-bright: #b8d4b2;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--green);
+      font-family: 'Courier New', Courier, monospace;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #container {
+      text-align: center;
+      max-width: 680px;
+      width: 90%;
+      padding: 2rem;
+    }
+
+    #clock {
+      font-size: clamp(2rem, 8vw, 4.5rem);
+      letter-spacing: 0.08em;
+      color: var(--green-bright);
+      font-weight: normal;
+      line-height: 1;
+    }
+
+    #date {
+      font-size: 0.85rem;
+      color: var(--green-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    #divider {
+      border: none;
+      border-top: 1px solid var(--green-dim);
+      opacity: 0.3;
+      margin-bottom: 2rem;
+    }
+
+    #otd-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--green-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    #otd-content {
+      font-size: 0.82rem;
+      line-height: 1.9;
+      color: var(--green);
+      text-align: left;
+    }
+
+    #otd-content .event {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(154, 186, 148, 0.07);
+    }
+
+    #otd-content .event:last-child {
+      border-bottom: none;
+    }
+
+    #otd-content .year {
+      color: var(--green-dim);
+      min-width: 3.5em;
+      display: inline-block;
+    }
+
+    #status {
+      font-size: 0.7rem;
+      color: var(--green-dim);
+      margin-top: 1.5rem;
+      opacity: 0.5;
+    }
+
+    .blink {
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="clock">00:00:00</div>
+    <div id="date">loading...</div>
+    <hr id="divider">
+    <div id="otd-label">on this day</div>
+    <div id="otd-content"><span style="color:var(--green-dim)">fetching...</span></div>
+    <div id="status">wikipedia / on this day<span class="blink">_</span></div>
+  </div>
+
+  <script>
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hh}:${mm}:${ss}`;
+
+      const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+      const months = ['january','february','march','april','may','june',
+                      'july','august','september','october','november','december'];
+      const dayName = days[now.getDay()];
+      const monthName = months[now.getMonth()];
+      const dateNum = now.getDate();
+      const year = now.getFullYear();
+      document.getElementById('date').textContent = `${dayName}, ${monthName} ${dateNum}, ${year}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Wikipedia On This Day
+    async function fetchOTD() {
+      const now = new Date();
+      const month = now.getMonth() + 1;
+      const day = now.getDate();
+
+      try {
+        const res = await fetch(
+          `https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/${month}/${day}`,
+          { headers: { 'Accept': 'application/json' } }
+        );
+        const data = await res.json();
+        const events = data.events || [];
+
+        // Show ~8 events, sorted by year desc
+        const sorted = events.sort((a, b) => b.year - a.year).slice(0, 9);
+
+        const container = document.getElementById('otd-content');
+        container.innerHTML = '';
+
+        sorted.forEach(ev => {
+          const div = document.createElement('div');
+          div.className = 'event';
+          const text = ev.text.replace(/\[\[.*?\]\]/g, '').trim();
+          div.innerHTML = `<span class="year">${ev.year}</span> ${text}`;
+          container.appendChild(div);
+        });
+
+        document.getElementById('status').innerHTML =
+          `wikipedia / on this day — ${events.length} events found<span class="blink">_</span>`;
+      } catch (e) {
+        document.getElementById('otd-content').innerHTML =
+          `<span style="color:var(--green-dim)">could not reach wikipedia. check connection.</span>`;
+      }
+    }
+
+    fetchOTD();
+  </script>
+</body>
+</html>

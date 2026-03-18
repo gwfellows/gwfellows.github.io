@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link rel="stylesheet" href="/style.css" />
 </head>
-
-<link rel="stylesheet" href="/style.css" />
 
 
 
@@ -30,105 +29,129 @@
         </nav>
     </header>
 
-    <p>
-        Click on each project to learn more
-    </p>
-    <table>
+    <div class="portfolio-header">
+        <p class="portfolio-intro">Featured Projects</p>
+    </div>
 
-        <tr onclick="window.location='https://github.com/gwfellows/GPS-holder';">
-            <td style="text-align: right;">
-                <h2>GPS Holder</h2>
-                Designed and 3D-printed a GPS mount for a ship rail. Built for a captain's custom use case; parts are in active use
-                today.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/GPS_holder_in_use.jpeg" align=”left” class="portfolio-img"
-                        alt="the gps holder on the deck of a ship">
+    <div class="projects-container">
+        <a href="https://github.com/gwfellows/GPS-holder" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/GPS_holder_in_use.jpeg" alt="GPS holder mounted on ship rail">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">GPS Holder</h2>
+                <p class="project-description">
+                    Engineered and 3D-printed a custom GPS mount for ship rail installation. Designed for a captain's specific use case and flexible, secure, fastening on marine hardware. The solution remains in active use.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">CAD Design</span>
+                    <span class="tech-tag">3D Printing</span>
+                    <span class="tech-tag">Mechanical Design</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </a>
 
-        <tr onclick="window.location='https://github.com/gwfellows/guitar';">
-            <td style="text-align: right;" style="text-align: right;">
-                <h2>Electric Guitar</h2>
-                Built an ergonomic electric guitar body from 3 laser-cut aluminum plates. Designed in Autodesk Inventor after
-                prototyping in cardboard; all electronics as well as neck mount to the front plate for easy servicing.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/aluminum_guitar.jpeg" align=”left” class="portfolio-img" alt="the guitar">
+        <a href="https://github.com/gwfellows/guitar" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/aluminum_guitar.jpeg" alt="Laser-cut aluminum electric guitar body">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">Electric Guitar</h2>
+                <p class="project-description">
+                    Designed and built an ergonomic electric guitar body using three laser-cut aluminum  plates, optimizing for repairability. Prototyped iteratively with cardboard before finalizing in Autodesk Inventor CAD design. Built modular electronics mounting and neck attachment to the front plate for simplified servicing.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Autodesk Inventor</span>
+                    <span class="tech-tag">Laser Cutting</span>
+                    <span class="tech-tag">Electronics Integration</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </a>
 
-        <tr onclick="window.location='https://github.com/gwfellows/genetic-programming';">
-            <td style="text-align: right;">
-                <h2>Genetic Programming</h2>
-                Built a Python library for tree-based genetic programming. Used it to perform symbolic regression on
-                datasets—automatically deriving equations to fit data.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/symbolic_regression_fit.jpeg" class="portfolio-img" align=”left” alt="the guitar">
+        <a href="https://github.com/gwfellows/genetic-programming" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/symbolic_regression_fit.jpeg" alt="Symbolic regression fitting visualization">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">Genetic Programming Library</h2>
+                <p class="project-description">
+                    Built a Python library for tree-based genetic programming, implementing evolutionary algorithms to search the space of mathematical expressions. Applied the system to symbolic regression, automatically deriving closed-form equations from experimental datasets.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Genetic Algorithms</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </a>
 
-        <tr onclick="window.location='https://github.com/gwfellows/robotics';">
-            <td style="text-align: right;">
-                <h2>FTC Robotics</h2>
-                Spent 4 years designing and building FTC robots. As fabrication lead, machined parts for drivetrains and custom
-                mechanisms.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/ftc_robot.jpg" class="portfolio-img" align=”left” alt="the guitar">
+        <a href="https://github.com/gwfellows/robotics" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/ftc_robot.jpg" alt="FTC competition robot">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">FTC Robotics</h2>
+                <p class="project-description">
+                    Led fabrication engineering for 4 years in FIRST Tech Challenge. Designed and machined drivetrain components and custom mechanisms from aluminum, steel, and plastics. Worked cross-functionally with mechanical, electrical, and software teams to integrate systems that met competition requirements. Responsible for manufacturing and prototyping under competition timelines.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Manufacturing</span>
+                    <span class="tech-tag">CNC Machining</span>
+                    <span class="tech-tag">Mechanical Design</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </a>
 
-        <tr onclick="window.location='https://github.com/gwfellows/rover';">
-            <td style="text-align: right;">
-                <h2>Rover</h2>
-                Designed and built a rocker-bogie rover inspired by NASA’s Mars designs. Created airless wheels from helical steel coil
-                for rough terrain; tested successfully on dirt, grass, and rock.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/rover.png" class="portfolio-img" align=”left” alt="the guitar">
+        <a href="https://github.com/gwfellows/rover" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/rover.png" alt="NASA-inspired rocker-bogie rover">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">Mars Rover</h2>
+                <p class="project-description">
+                    Designed and fabricated a rocker-bogie rover inspired by NASA's Mars Curiosity architecture. Built airless wheels using helical steel coil springs for terrain adaptability. Tested on varied terrain (dirt, grass, rock) to validate suspension design and wheel performance.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Mechanical Design</span>
+                    <span class="tech-tag">Materials Engineering</span>
+                    <span class="tech-tag">Robotics</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </a>
 
-        <tr onclick="window.location='https://fusor.net/board/viewtopic.php?t=14037';">
-            <td style="text-align: right;">
-                <h2>Fusor</h2>
-                Helped with project to build a working nuclear fusion reactor. Focused on high-voltage systems and designed a current
-                measurement tool
-                for diagnostics.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/fusor_chamber.png" class="portfolio-img" align=”left” alt="the guitar">
+        <a href="https://fusor.net/board/viewtopic.php?t=14037" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/fusor_chamber.png" alt="Nuclear fusion reactor chamber">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">Inertial Confinement Fusor</h2>
+                <p class="project-description">
+                    Contributed to construction of a working inertial confinement fusion reactor. Worked on high-voltage system design, documentation, and radiation shielding for systems operating at 40+ kV. Designed and built a current measurement diagnostic tool for reactor analysis.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">High-Voltage Systems</span>
+                    <span class="tech-tag">Instrumentation</span>
+                    <span class="tech-tag">Physics Engineering</span>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </a>
 
-        <tr onclick="window.location='https://github.com/gwfellows/compliant-mechanisms';">
-            <td style="text-align: right;" style="text-align: right;">
-                <h2>Compliant Mechanisms</h2>
-                Designed and machined compliant shock absorbers from Delrin and stainless steel for FTC robot applications.
-            </td>
-            <td style="vertical-align: top;">
-                <div style="vertical-align: top;">
-                    <img src="imgs/steel_compliant_coupler.jpeg" class="portfolio-img" align=”left” alt="the guitar">
+        <a href="https://github.com/gwfellows/compliant-mechanisms" class="project-card">
+            <div class="project-image">
+                <img src="/imgs/steel_compliant_coupler.jpeg" alt="Compliant shock absorber mechanism">
+            </div>
+            <div class="project-content">
+                <h2 class="project-title">Compliant Mechanisms</h2>
+                <p class="project-description">
+                    Designed and machined custom compliant shock absorbers and couplers for FTC robot drivetrain applications. Selected materials (Delrin and stainless steel) based on stiffness requirements and impact absorption needs.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Mechanical Design</span>
+                    <span class="tech-tag">Material Selection</span>
+                    <span class="tech-tag">Machining</span>
                 </div>
-            </td>
-        </tr>
-
-    </table>
-    <script src="/navbar.js"></script>
+            </div>
+        </a>
+    </div>
 
 </body>
 

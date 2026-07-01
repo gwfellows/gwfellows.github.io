@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 
@@ -14,173 +14,125 @@
 
     <header class="navbar">
         <div class="navbar-left">
-            <a href="/" class="brand">Grant Fellows</a>
+            <a href="index.html" class="brand">Grant Fellows</a>
         </div>
         <nav class="navbar-right">
-            <a href="/portfolio.html" style="color:black;text-decoration: underline;"> Portfolio</a>
-            <a href="/resume.pdf">Resume</a>
+            <a href="portfolio.html" style="color:black;text-decoration: underline;"> Portfolio</a>
+            <a href="resume.pdf">Resume</a>
             <a href="mailto:gwfellows@icloud.com">Contact</a>
-            <a href="https://github.com/gwfellows" target="_blank">
-                <img src="/icons/github.svg" alt="GitHub" height="20" width="20" />
+            <a href="https://github.com/gwfellows" target="_blank" rel="noopener noreferrer">
+                <img src="icons/github.svg" alt="GitHub" height="20" width="20" />
             </a>
-            <a href="https://www.linkedin.com/in/grant-fellows-7baa8628a/" target="_blank">
-                <img src="/icons/linkedin.svg" alt="LinkedIn" height="20" width="20" />
+            <a href="https://www.linkedin.com/in/grant-fellows-7baa8628a/" target="_blank" rel="noopener noreferrer">
+                <img src="icons/linkedin.svg" alt="LinkedIn" height="20" width="20" />
+            </a>
+            <a href="https://www.printables.com/@gfellows" target="_blank" rel="noopener noreferrer">
+                <img src="icons/printables.svg" alt="Printables" height="20" width="20" />
             </a>
         </nav>
     </header>
 
     <div class="portfolio-header">
-        <p class="portfolio-intro">Featured Projects</p>
+        <h1 class="portfolio-intro">Featured Projects</h1>
     </div>
 
-    <div class="projects-container">
-        <a href="https://github.com/VFS-Go-Aero/visual-obstacle-detection" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/object_detection.jpg" alt="object detection visualization with object points on drone camera feed">
+    <div class="projects-list">
+        <a href="https://github.com/VFS-Go-Aero/visual-obstacle-detection" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/object_detection.jpg" alt="object detection visualization with object points on drone camera feed">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Visual Obstacle Detection</h2>
-                <p class="project-description">
-                    Leading the Purdue VFS software and autonomy team to develop a real-time visual obstacle detection system for autonomous drones. Implemented algorithms to identify and track obstacles in drone sterocamera feeds, enabling safe navigation in complex environments for our GoAERO Prize entry.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Robot Operating System (ROS)</span>
-                    <span class="tech-tag">Software Development</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Visual Obstacle Detection</h2>
+                <p class="project-row-description">Leading the Purdue VFS software and autonomy team to develop a real-time visual obstacle detection system for autonomous drones, tracking obstacles in stereo-camera feeds for our GoAERO Prize entry.</p>
+                <p class="project-row-tech">Robot Operating System (ROS) · Software Development</p>
             </div>
         </a>
 
-        <a href="https://web.ics.purdue.edu/~lunabot/index.html" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/conops.png" alt="Concept of Operations for Purdue Lunabotics robot">
+        <a href="https://web.ics.purdue.edu/~lunabot/index.html" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/conops.png" alt="Concept of Operations for Purdue Lunabotics robot">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Lunabotics Systems Engineering</h2>
-                <p class="project-description">
-                    Led Systems Engineering for Purdue Lunabotics. Created detailed documentation outlining system architecture, operational scenarios, and requirements to guide design and development efforts.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Systems Engineering</span>
-                    <span class="tech-tag">Engineering Documentation</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Lunabotics Systems Engineering</h2>
+                <p class="project-row-description">Led Systems Engineering for Purdue Lunabotics, documenting system architecture, operational scenarios, and requirements to guide design and development.</p>
+                <p class="project-row-tech">Systems Engineering · Engineering Documentation</p>
             </div>
         </a>
 
-        <a href="https://github.com/gwfellows/GPS-holder" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/GPS_holder_in_use.jpeg" alt="GPS holder mounted on ship rail">
+        <a href="https://github.com/gwfellows/GPS-holder" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/GPS_holder_in_use.jpeg" alt="GPS holder mounted on ship rail">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">GPS Holder</h2>
-                <p class="project-description">
-                    Engineered and 3D-printed a custom GPS mount for ship rail installation. Designed for a captain's specific use case and flexible, secure, fastening on marine hardware. The solution remains in active use.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">CAD Design</span>
-                    <span class="tech-tag">3D Printing</span>
-                    <span class="tech-tag">Mechanical Design</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">GPS Holder</h2>
+                <p class="project-row-description">Engineered and 3D-printed a custom GPS mount for ship rail installation, designed for a captain's specific use case and secure fastening on marine hardware. Still in active use.</p>
+                <p class="project-row-tech">CAD Design · 3D Printing · Mechanical Design</p>
             </div>
         </a>
 
-        <a href="https://github.com/gwfellows/guitar" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/aluminum_guitar.jpeg" alt="Laser-cut aluminum electric guitar body">
+        <a href="https://github.com/gwfellows/guitar" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/aluminum_guitar.jpeg" alt="Laser-cut aluminum electric guitar body">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Electric Guitar</h2>
-                <p class="project-description">
-                    Designed and built an ergonomic electric guitar body using three laser-cut aluminum  plates, optimizing for repairability. Prototyped iteratively with cardboard before finalizing in Autodesk Inventor CAD design. Built modular electronics mounting and neck attachment to the front plate for simplified servicing.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Autodesk Inventor</span>
-                    <span class="tech-tag">Laser Cutting</span>
-                    <span class="tech-tag">Electronics Integration</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Electric Guitar</h2>
+                <p class="project-row-description">Designed and built an ergonomic electric guitar body from three laser-cut aluminum plates, with modular electronics mounting for simplified servicing.</p>
+                <p class="project-row-tech">Autodesk Inventor · Laser Cutting · Electronics Integration</p>
             </div>
         </a>
 
-        <a href="https://github.com/gwfellows/genetic-programming" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/symbolic_regression_fit.jpeg" alt="Symbolic regression fitting visualization">
+        <a href="https://github.com/gwfellows/genetic-programming" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/symbolic_regression_fit.jpeg" alt="Symbolic regression fitting visualization">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Genetic Programming Library</h2>
-                <p class="project-description">
-                    Built a Python library for tree-based genetic programming, implementing evolutionary algorithms to search the space of mathematical expressions. Applied the system to symbolic regression, automatically deriving closed-form equations from experimental datasets.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Genetic Algorithms</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Genetic Programming Library</h2>
+                <p class="project-row-description">Built a Python library for tree-based genetic programming, applying evolutionary algorithms to symbolic regression to derive closed-form equations from experimental data.</p>
+                <p class="project-row-tech">Python · Genetic Algorithms</p>
             </div>
         </a>
 
-        <a href="https://github.com/gwfellows/robotics" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/ftc_robot.jpg" alt="FTC competition robot">
+        <a href="https://github.com/gwfellows/robotics" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/ftc_robot.jpg" alt="FTC competition robot">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">FTC Robotics</h2>
-                <p class="project-description">
-                    Led fabrication engineering for 4 years in FIRST Tech Challenge. Designed and machined drivetrain components and custom mechanisms from aluminum, steel, and plastics. Worked cross-functionally with mechanical, electrical, and software teams to integrate systems that met competition requirements. Responsible for manufacturing and prototyping under competition timelines.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Manufacturing</span>
-                    <span class="tech-tag">CNC Machining</span>
-                    <span class="tech-tag">Mechanical Design</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">FTC Robotics</h2>
+                <p class="project-row-description">Led fabrication engineering for 4 years in FIRST Tech Challenge, machining drivetrain components and custom mechanisms under competition timelines.</p>
+                <p class="project-row-tech">Manufacturing · CNC Machining · Mechanical Design</p>
             </div>
         </a>
 
-        <a href="https://github.com/gwfellows/rover" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/rover.png" alt="NASA-inspired rocker-bogie rover">
+        <a href="https://github.com/gwfellows/rover" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/rover.png" alt="NASA-inspired rocker-bogie rover">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Mars Rover</h2>
-                <p class="project-description">
-                    Designed and fabricated a rocker-bogie rover inspired by NASA's Mars Curiosity architecture. Built airless wheels using helical steel coil springs for terrain adaptability. Tested on varied terrain (dirt, grass, rock) to validate suspension design and wheel performance.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Mechanical Design</span>
-                    <span class="tech-tag">Materials Engineering</span>
-                    <span class="tech-tag">Robotics</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Mars Rover</h2>
+                <p class="project-row-description">Designed and fabricated a rocker-bogie rover inspired by NASA's Mars Curiosity architecture, with airless coil-spring wheels tested across varied terrain.</p>
+                <p class="project-row-tech">Mechanical Design · Materials Engineering · Robotics</p>
             </div>
         </a>
 
-        <a href="https://fusor.net/board/viewtopic.php?t=14037" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/fusor_chamber.png" alt="Nuclear fusion reactor chamber">
+        <a href="https://fusor.net/board/viewtopic.php?t=14037" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/fusor_chamber.png" alt="Nuclear fusion reactor chamber">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Inertial Confinement Fusor</h2>
-                <p class="project-description">
-                    Contributed to construction of a working inertial confinement fusion reactor. Worked on high-voltage system design, documentation, and radiation shielding for systems operating at 40+ kV. Designed and built a current measurement diagnostic tool for reactor analysis.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">High-Voltage Systems</span>
-                    <span class="tech-tag">Instrumentation</span>
-                    <span class="tech-tag">Physics Engineering</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Inertial Confinement Fusor</h2>
+                <p class="project-row-description">Contributed to a working inertial confinement fusion reactor, working on high-voltage system design, documentation, and radiation shielding at 40+ kV.</p>
+                <p class="project-row-tech">High-Voltage Systems · Instrumentation · Physics Engineering</p>
             </div>
         </a>
 
-        <a href="https://github.com/gwfellows/compliant-mechanisms" class="project-card">
-            <div class="project-image">
-                <img src="/imgs/steel_compliant_coupler.jpeg" alt="Compliant shock absorber mechanism">
+        <a href="https://github.com/gwfellows/compliant-mechanisms" class="project-row">
+            <div class="project-row-thumb">
+                <img src="imgs/steel_compliant_coupler.jpeg" alt="Compliant shock absorber mechanism">
             </div>
-            <div class="project-content">
-                <h2 class="project-title">Compliant Mechanisms</h2>
-                <p class="project-description">
-                    Designed and machined custom compliant shock absorbers and couplers for FTC robot drivetrain applications. Selected materials (Delrin and stainless steel) based on stiffness requirements and impact absorption needs.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Mechanical Design</span>
-                    <span class="tech-tag">Material Selection</span>
-                    <span class="tech-tag">Machining</span>
-                </div>
+            <div class="project-row-body">
+                <h2 class="project-row-title">Compliant Mechanisms</h2>
+                <p class="project-row-description">Designed and machined custom compliant shock absorbers and couplers for FTC robot drivetrains, selecting materials by stiffness and impact-absorption needs.</p>
+                <p class="project-row-tech">Mechanical Design · Material Selection · Machining</p>
             </div>
         </a>
     </div>

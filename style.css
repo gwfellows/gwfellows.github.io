@@ -95,14 +95,13 @@ main {
 }
 
 .intro-image {
-    max-width: 260px;
+    max-width: 100%;
 }
 
 .intro-image img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -145,7 +144,6 @@ main {
     flex: 0 0 96px;
     width: 96px;
     height: 72px;
-    border-radius: 6px;
     overflow: hidden;
     background: #f5f5f5;
 }
@@ -270,7 +268,6 @@ main {
     }
 
     .intro-image {
-        max-width: 200px;
         margin-top: 0.25rem;
     }
 
@@ -316,10 +313,6 @@ main {
 
     .page-layout {
         gap: 1.75rem;
-    }
-
-    .intro-image {
-        max-width: 160px;
     }
 
     .experience h2 {

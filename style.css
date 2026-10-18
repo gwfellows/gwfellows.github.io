@@ -62,7 +62,7 @@ b,strong,.m{font-weight:500}
 .row p a:hover{color:var(--red);border-bottom-color:var(--red)}
 
 /* interior directory sign (black panel, white type only - never red on black) */
-.dir{background:var(--ink);color:#fff;margin-top:44px}
+.dir{background:var(--ink);color:#fff;margin-top:26px}
 .dir-h{font-size:12px;font-weight:500;padding:10px 20px;border-bottom:1px solid #fff;display:flex;justify-content:space-between}
 .dir-r{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;
  border-bottom:1px solid #fff;font-weight:500;font-size:24px;letter-spacing:-.2px}
@@ -77,6 +77,14 @@ b,strong,.m{font-weight:500}
 .tile em{font-style:normal;font-size:13px;font-weight:500}
 .tile:hover{background:#fff;color:var(--ink)}
 .tile:hover .ic{background:var(--ink)}
+
+.ot{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink)}
+.ot a{padding:14px 12px 10px;border-right:1px solid var(--ink);display:block}
+.ot a:last-child{border-right:0}
+.ot .ic{display:block;width:30px;height:30px;margin-bottom:10px;background:var(--ink);-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.ot em{font-style:normal;font-weight:500;font-size:14px}
+.ot a:hover{background:var(--ink);color:#fff}
+.ot a:hover .ic{background:#fff}
 
 .foot{margin-top:56px;border-top:6px solid var(--ink)}
 .foot .wrap{display:flex;justify-content:space-between;padding-top:10px;padding-bottom:30px;font-size:12px;gap:16px;flex-wrap:wrap}

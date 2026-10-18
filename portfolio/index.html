@@ -1,153 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="../style.css" />
-</head>
-
-
-
-<body>
-
-    <header class="navbar">
-        <div class="navbar-left">
-            <a href="/" class="brand">Grant Fellows</a>
-        </div>
-        <nav class="navbar-right">
-            <a href="/portfolio/" style="color:black;text-decoration: underline;"> Portfolio</a>
-            <a href="../resume.pdf">Resume</a>
-            <a href="mailto:gwfellows@icloud.com">Contact</a>
-            <a href="https://github.com/gwfellows" target="_blank" rel="noopener noreferrer">
-                <img src="../icons/github.svg" alt="GitHub" height="20" width="20" />
-            </a>
-            <a href="https://www.linkedin.com/in/grant-fellows-7baa8628a/" target="_blank" rel="noopener noreferrer">
-                <img src="../icons/linkedin.svg" alt="LinkedIn" height="20" width="20" />
-            </a>
-            <a href="https://www.printables.com/@gfellows" target="_blank" rel="noopener noreferrer">
-                <img src="../icons/printables.svg" alt="Printables" height="20" width="20" />
-            </a>
-        </nav>
-    </header>
-
-    <div class="portfolio-header">
-        <h1 class="portfolio-intro">Featured Projects</h1>
-    </div>
-
-    <div class="projects-list">
-        <div class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/sample_mover.jpg" alt="3-axis stepper-driven gantry for automated sample handling" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Sample Mover</h2>
-                <p class="project-row-description">Designed, fabricated, and tested a 3-axis stepper-driven gantry for automated biological sample handling in Prof. Euiwon Bae's research group.</p>
-                <p class="project-row-tech">CAD Design · 3D Printing</p>
-            </div>
-        </div>
-
-        <a href="https://github.com/VFS-Go-Aero/visual-obstacle-detection" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/object_detection.jpg" alt="object detection visualization with object points on drone camera feed" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Visual Obstacle Detection</h2>
-                <p class="project-row-description">Leading the Purdue VFS software and autonomy team to develop a real-time visual obstacle detection system for autonomous drones, tracking obstacles in stereo-camera feeds for our GoAERO Prize entry.</p>
-                <p class="project-row-tech">Robot Operating System (ROS) · Software Development</p>
-            </div>
-        </a>
-
-        <a href="https://purduelunabotics.com/" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/conops.png" alt="Concept of Operations for Purdue Lunabotics robot" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Lunabotics Systems Engineering</h2>
-                <p class="project-row-description">Led Systems Engineering for Purdue Lunabotics, documenting system architecture, operational scenarios, and requirements to guide design and development.</p>
-                <p class="project-row-tech">Systems Engineering · Engineering Documentation</p>
-            </div>
-        </a>
-
-        <a href="https://github.com/gwfellows/GPS-holder" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/GPS_holder_in_use.jpeg" alt="GPS holder mounted on ship rail" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">GPS Holder</h2>
-                <p class="project-row-description">Engineered and 3D-printed a custom GPS mount for ship rail installation, designed for a captain's specific use case and secure fastening on marine hardware. Still in active use.</p>
-                <p class="project-row-tech">CAD Design · 3D Printing · Mechanical Design</p>
-            </div>
-        </a>
-
-        <a href="https://github.com/gwfellows/guitar" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/aluminum_guitar.jpeg" alt="Laser-cut aluminum electric guitar body" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Electric Guitar</h2>
-                <p class="project-row-description">Designed and built an ergonomic electric guitar body from three laser-cut aluminum plates, with modular electronics mounting for simplified servicing.</p>
-                <p class="project-row-tech">Autodesk Inventor · Laser Cutting · Electronics Integration</p>
-            </div>
-        </a>
-
-        <a href="https://github.com/gwfellows/genetic-programming" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/symbolic_regression_fit.jpeg" alt="Symbolic regression fitting visualization" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Genetic Programming Library</h2>
-                <p class="project-row-description">Built a Python library for tree-based genetic programming, applying evolutionary algorithms to symbolic regression to derive closed-form equations from experimental data.</p>
-                <p class="project-row-tech">Python · Genetic Algorithms</p>
-            </div>
-        </a>
-
-        <a href="https://github.com/gwfellows/robotics" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/ftc_robot.jpg" alt="FTC competition robot" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">FTC Robotics</h2>
-                <p class="project-row-description">Led fabrication engineering for 4 years in FIRST Tech Challenge, machining drivetrain components and custom mechanisms under competition timelines.</p>
-                <p class="project-row-tech">Manufacturing · CNC Machining · Mechanical Design</p>
-            </div>
-        </a>
-
-        <a href="https://github.com/gwfellows/rover" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/rover.jpg" alt="NASA-inspired rocker-bogie rover" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Mars Rover</h2>
-                <p class="project-row-description">Designed and fabricated a rocker-bogie rover inspired by NASA's Mars Curiosity architecture, with airless coil-spring wheels tested across varied terrain.</p>
-                <p class="project-row-tech">Mechanical Design · Materials Engineering · Robotics</p>
-            </div>
-        </a>
-
-        <a href="https://fusor.net/board/viewtopic.php?t=14037" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/fusor_chamber.jpg" alt="Nuclear fusion reactor chamber" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Inertial Confinement Fusor</h2>
-                <p class="project-row-description">Contributed to a working inertial confinement fusion reactor, working on high-voltage system design, documentation, and radiation shielding at 40+ kV.</p>
-                <p class="project-row-tech">High-Voltage Systems · Instrumentation · Physics Engineering</p>
-            </div>
-        </a>
-
-        <a href="https://github.com/gwfellows/compliant-mechanisms" class="project-row">
-            <div class="project-row-thumb">
-                <img src="../imgs/steel_compliant_coupler.jpeg" alt="Compliant shock absorber mechanism" loading="lazy">
-            </div>
-            <div class="project-row-body">
-                <h2 class="project-row-title">Compliant Mechanisms</h2>
-                <p class="project-row-description">Designed and machined custom compliant shock absorbers and couplers for FTC robot drivetrains, selecting materials by stiffness and impact-absorption needs.</p>
-                <p class="project-row-tech">Mechanical Design · Material Selection · Machining</p>
-            </div>
-        </a>
-    </div>
-
-</body>
-
-</html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Grant Fellows — mechanical engineering student at Purdue University with experience in CAD/CAM, fabrication, project management, and software development.">
+<title>Portfolio — Grant Fellows</title>
+<link rel="stylesheet" href="../style.css">
+</head><body>
+<header class="mast"><div class="wrap">
+<a class="mk" href="/" aria-label="Grant Fellows, home">GF</a>
+<nav class="nav"><a href="/portfolio/" aria-current="page">Portfolio</a><a href="../resume.pdf">Resume</a><a href="mailto:gwfellows@icloud.com">Contact</a></nav>
+</div></header>
+<div class="wrap">
+<div class="knock-wrap"><svg class="knock" viewBox="0 0 1000 190" role="img" aria-label="Portfolio" xmlns="http://www.w3.org/2000/svg">
+<defs><mask id="k2" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="190">
+<rect width="1000" height="190" fill="#fff"/>
+<text x="-4" y="142" font-size="130" font-weight="500" fill="#000" textLength="560" lengthAdjust="spacingAndGlyphs"
+ font-family='Helvetica Neue, Heros, Helvetica, Arial, sans-serif' letter-spacing="-3">Portfolio</text></mask></defs>
+<g mask="url(#k2)" fill="var(--red)"><rect x="0" y="0" width="1000" height="19"/><rect x="0" y="22" width="1000" height="19"/><rect x="0" y="44" width="1000" height="19"/><rect x="0" y="66" width="1000" height="19"/><rect x="0" y="88" width="1000" height="19"/><rect x="0" y="110" width="1000" height="19"/><rect x="0" y="132" width="1000" height="19"/><rect x="0" y="154" width="1000" height="19"/></g></svg></div>
+<div class="pg"><div class="card wide">
+<div class="top"><span class="n">01</span><span class="k">Research</span></div>
+<div class="ph"><img src="../imgs/sample_mover.jpg" alt="3-axis stepper-driven gantry for automated sample handling" loading="lazy"></div>
+<div class="bd"><h2>Sample Mover</h2><p>Designed, fabricated, and tested a 3-axis stepper-driven gantry for automated biological sample handling in Prof. Euiwon Bae&rsquo;s research group.</p><div class="t">CAD Design / 3D Printing</div></div></div><a class="card" href="https://github.com/VFS-Go-Aero/visual-obstacle-detection" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">02</span><span class="k">Autonomy</span></div>
+<div class="ph"><img src="../imgs/object_detection.jpg" alt="object detection visualization with object points on drone camera feed" loading="lazy"></div>
+<div class="bd"><h2>Visual Obstacle Detection</h2><p>Leading the Purdue VFS software and autonomy team to develop a real-time visual obstacle detection system for autonomous drones, tracking obstacles in stereo-camera feeds for our GoAERO Prize entry.</p><div class="t">ROS / Software Development</div></div></a><a class="card" href="https://purduelunabotics.com/" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">03</span><span class="k">Systems</span></div>
+<div class="ph"><img src="../imgs/conops.png" alt="Concept of Operations for Purdue Lunabotics robot" loading="lazy"></div>
+<div class="bd"><h2>Lunabotics Systems Engineering</h2><p>Led Systems Engineering for Purdue Lunabotics, documenting system architecture, operational scenarios, and requirements to guide design and development.</p><div class="t">Systems Engineering / Documentation</div></div></a><a class="card" href="https://github.com/gwfellows/GPS-holder" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">04</span><span class="k">Design</span></div>
+<div class="ph"><img src="../imgs/GPS_holder_in_use.jpeg" alt="GPS holder mounted on ship rail" loading="lazy"></div>
+<div class="bd"><h2>GPS Holder</h2><p>Engineered and 3D-printed a custom GPS mount for ship rail installation, designed for a captain&rsquo;s specific use case and secure fastening on marine hardware. Still in active use.</p><div class="t">CAD / 3D Printing / Mechanical Design</div></div></a><a class="card" href="https://github.com/gwfellows/guitar" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">05</span><span class="k">Design</span></div>
+<div class="ph"><img src="../imgs/aluminum_guitar.jpeg" alt="Laser-cut aluminum electric guitar body" loading="lazy"></div>
+<div class="bd"><h2>Electric Guitar</h2><p>Designed and built an ergonomic electric guitar body from three laser-cut aluminum plates, with modular electronics mounting for simplified servicing.</p><div class="t">Inventor / Laser Cutting / Electronics</div></div></a><a class="card" href="https://github.com/gwfellows/genetic-programming" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">06</span><span class="k">Software</span></div>
+<div class="ph"><img src="../imgs/symbolic_regression_fit.jpeg" alt="Symbolic regression fitting visualization" loading="lazy"></div>
+<div class="bd"><h2>Genetic Programming Library</h2><p>Built a Python library for tree-based genetic programming, applying evolutionary algorithms to symbolic regression to derive closed-form equations from experimental data.</p><div class="t">Python / Genetic Algorithms</div></div></a><a class="card" href="https://github.com/gwfellows/robotics" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">07</span><span class="k">Fabrication</span></div>
+<div class="ph"><img src="../imgs/ftc_robot.jpg" alt="FTC competition robot" loading="lazy"></div>
+<div class="bd"><h2>FTC Robotics</h2><p>Led fabrication engineering for 4 years in FIRST Tech Challenge, machining drivetrain components and custom mechanisms under competition timelines.</p><div class="t">Manufacturing / CNC Machining</div></div></a><a class="card" href="https://github.com/gwfellows/rover" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">08</span><span class="k">Robotics</span></div>
+<div class="ph"><img src="../imgs/rover.jpg" alt="NASA-inspired rocker-bogie rover" loading="lazy"></div>
+<div class="bd"><h2>Mars Rover</h2><p>Designed and fabricated a rocker-bogie rover inspired by NASA&rsquo;s Mars Curiosity architecture, with airless coil-spring wheels tested across varied terrain.</p><div class="t">Mechanical Design / Robotics</div></div></a><a class="card" href="https://fusor.net/board/viewtopic.php?t=14037" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">09</span><span class="k">Physics</span></div>
+<div class="ph"><img src="../imgs/fusor_chamber.jpg" alt="Nuclear fusion reactor chamber" loading="lazy"></div>
+<div class="bd"><h2>Inertial Confinement Fusor</h2><p>Contributed to a working inertial confinement fusion reactor, working on high-voltage system design, documentation, and radiation shielding at 40+ kV.</p><div class="t">High-Voltage Systems / Instrumentation</div></div></a><a class="card" href="https://github.com/gwfellows/compliant-mechanisms" target="_blank" rel="noopener noreferrer">
+<div class="top"><span class="n">10</span><span class="k">Design</span></div>
+<div class="ph"><img src="../imgs/steel_compliant_coupler.jpeg" alt="Compliant shock absorber mechanism" loading="lazy"></div>
+<div class="bd"><h2>Compliant Mechanisms</h2><p>Designed and machined custom compliant shock absorbers and couplers for FTC robot drivetrains, selecting materials by stiffness and impact-absorption needs.</p><div class="t">Material Selection / Machining</div></div></a><a class="card sign" href="https://github.com/gwfellows" target="_blank" rel="noopener noreferrer" style="--src:url('../icons/github.svg')">
+<span class="ic"></span><div><h2>More on GitHub</h2><p>All repositories &rarr;</p></div></a></div>
+</div><footer class="foot"><div class="wrap"><span><b>Grant Fellows</b></span><span>gwfellows@icloud.com</span></div></footer>
+</body></html>
